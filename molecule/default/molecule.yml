@@ -1,0 +1,21 @@
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+platforms:
+  - name: centos7
+    box: centos/7
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ../shared/converge.yml
+verifier:
+  name: testinfra
+  directory: ../shared/tests
+  options:
+    # Add a -v so you see the individual test names,
+    # particularily useful with parameterized tests
+    v: true
+    sudo: true

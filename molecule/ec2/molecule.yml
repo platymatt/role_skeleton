@@ -1,0 +1,19 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: delegated
+platforms:
+  - name: instance
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ../shared/converge.yml
+verifier:
+  name: testinfra
+  directory: ../shared/tests
+  options:
+    # Add a -v so you see the individual test names,
+    # particularily useful with parameterized tests
+    v: true
+    sudo: true
